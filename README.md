@@ -8,16 +8,15 @@
 2. 尽可能地使代码容易阅读
 
 目录:
-1.  [javascript语法规范](#javascript)
+1.  [javascript规范](#javascript规范)
     1.  [命名规范](#命名规范)
     1.  [Add spacing to headings](#add-spacing-to-headings)
 
-## javascript
+## javascript规范
 
 ### 命名规范
 
-> 在`JavaScript`中使用两种变量命名
-
+在`JavaScript`中使用两种变量命名
 - `UpperCamelCase` 每个单词的首字母都大写，包含第一个单词。
 - `lowerCamelCase` 除了第一个字母始终是小写（即使是缩略词），每个单词的首字母都大写。
 
