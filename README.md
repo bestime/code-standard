@@ -8,11 +8,11 @@
 2. 尽可能地使代码容易阅读
 
 目录:
-1.  [javascript规范](#javascript规范)
+1.  [JS/TS规范](#JS/TS规范)
     1.  [命名规范](#命名规范)
     1.  [Add spacing to headings](#add-spacing-to-headings)
 
-## javascript规范
+## JS/TS规范
 
 ### 命名规范
 
@@ -22,7 +22,7 @@
 
 `UpperCamelCase`： 类名、组件名、类型定义 都应该首字母大写
 
-```typescript
+```ts
 class GoodStudent {}
 
 const user: GoodStudent = new GoodStudent();
