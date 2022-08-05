@@ -9,19 +9,19 @@
 
 目录:
 1.  [markdown语法参考](https://github.com/google/styleguide/blob/gh-pages/docguide/style.md#document-layout)
-2.  [JS/TS规范](#JS/TS规范)
+2.  [JS、TS规范](#JS、TS规范)
     1.  [命名规范](#命名规范)
     1.  [对所有流控制结构使用花括号](#对所有流控制结构使用花括号)
     1.  [JS注释](#https://jsdoc.app/tags-param.html)
     1.  [TS注释](#http://typedoc.org/tags/param/)
-3.  [谨慎使用全局JS/CSS](#谨慎使用全局JS/CSS)
+3.  [谨慎使用全局JS、CSS](#谨慎使用全局JS、CSS)
 4.  [vue规范](#vue规范)
-    1.  [部分技术建议](#组件文件结构)
+    1.  [部分技术建议](#部分技术建议)
     1.  [组件文件结构](#组件文件结构)
 5.  [文件相关](#文件相关)
     
 
-## JS/TS规范
+## JS、TS规范
 
 虽然前端流行不加分号，但还是建议养成行末添加分号的习惯 `";"`
 
@@ -77,7 +77,7 @@ if (overflowChars !== other.overflowChars) {
 }
 ```
 
-## 谨慎使用全局JS/CSS
+## 谨慎使用全局JS、CSS
 - `明确声明`每一个文件中用到的所有资源，保证可以直`接跳转到引用`
 - 禁用 `全局样式`，造成不必要的样式重写
 - 养成按需引入的习惯
