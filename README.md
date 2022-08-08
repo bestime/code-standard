@@ -2,9 +2,9 @@
 为了同一团队代码风格，尽可能地使代码容易阅读，规定了部分代码规范:
 
 
-1. 代码缩进用`2个空格`代替tab
+1. 代码缩进用`2个空格`代替`tab`
 2. 文件结束符使用 `LF`，如果是 `CRLF`，请自行配置编辑器、git等工具
-3. 代码风格检测使用`eslint+prettier`（编辑器插件自行配置，读取本地项目的配置文件）
+3. 代码风格检测使用`eslint + prettier`（编辑器插件自行配置，读取本地项目的配置文件）
 4. 禁用 `全局样式`，造成不必要的样式重写
 5. 少写看上去高级，却不容易阅读的代码（交给构建工具去做），逻辑步骤要明确
 
@@ -12,6 +12,8 @@
 1.  [markdown语法参考](https://github.com/google/styleguide/blob/gh-pages/docguide/style.md#document-layout)
 2.  [Javascript规范](#Javascript规范)
     1.  [命名规范](#命名规范)
+    1.  [模块导出](#模块导出)
+    1.  [谨慎使用class类](#谨慎使用class类)
     1.  [对所有流控制结构使用花括号](#对所有流控制结构使用花括号)
     1.  [JS注释](https://jsdoc.app/tags-param.html)
     1.  [TS注释](http://typedoc.org/tags/param/)
@@ -24,8 +26,8 @@
 ## Javascript规范
 
 - 虽然前端流行不加分号，但还是建议养成行末添加分号的习惯 `";"`
-- `明确声明`每一个文件中用到的所有资源，保证可以直`接跳转到引用`
-- 养成按需引入的习惯
+- `明确声明`每一个文件中用到的所有资源，保证可以直接`跳转到引用`
+- 养成按需引入的习惯，不要造成个别文件雍总
 
 ### 命名规范
 
@@ -55,6 +57,32 @@ const tokenName = 'user-token'
 
 function getBasicInfo () {}
 ```
+
+
+### 模块导出
+
+零散的方法，请按需导出，比如：
+```javascript
+export function A () {}
+
+export function B () {}
+
+export function C () {}
+```
+
+不要 `export default` 一大堆可能用不上的方法，不利于 `webpack` 体积优化
+```javascript
+export default {
+  A: function () {},
+  B: function () {},
+  C: function () {}
+}
+```
+
+
+### 谨慎使用class类
+
+`插件`相关可以使用`类`，但`辅助工具`、`函数`、`变量`、`常量`等业务代码不建议封装到`类`里，不要为了图一时方便而牺牲`构建体积`
 
 ### 对所有流控制结构使用花括号
 ```javascript
