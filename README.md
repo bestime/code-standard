@@ -142,11 +142,12 @@ if (overflowChars !== other.overflowChars) {
 ## vue规范
 
 - 不允许将图片等`静态资源`放入`src`文件夹，请放在`public`文件夹里
-- 保持`main.js`干净
+- 保持 `main.js`或`main.ts` 干净
 - 不建议使用`vuex` 。（如果用：请把变量名取复杂一点）
 - 不建议使用`event-bus`等类似的订阅发布模式。（如果用：请把订阅名取复杂一点）
 - 不建议使用 `provide` 和 `injecet`。 （如果用：请把方法名取复杂一点）
-- `vue2` 中不允许使用 `@vue/composition-api` 造成风格不统一
+- `vue2.x` 中不允许使用 `@vue/composition-api` 造成风格不统一
+- `vue3.x` 中不允许使用 `options api` 语法
 
 ### 组件文件结构
 
