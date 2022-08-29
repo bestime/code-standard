@@ -23,12 +23,11 @@
     1.  [组件注册及使用](#组件注册及使用)
     1.  [状态管理](#状态管理)
 3.  [css规范](#css规范)
+4.  [项目结构](#项目结构)
     
     
 
 ## Javascript规范
-
-- 虽然前端流行不加分号，但还是建议养成行末添加分号的习惯 `";"`
 - `明确声明`每一个文件中用到的所有资源，保证可以直接`跳转到引用`
 - 养成按需引入的习惯，不要造成个别文件雍总
 - 少写看上去高级，却不容易阅读的代码（交给构建工具去做），逻辑步骤要明确
@@ -144,7 +143,7 @@ if (overflowChars !== other.overflowChars) {
 - 不允许将图片等`静态资源`放入`src`文件夹，请放在`public`文件夹里
 - 保持 `main.js`或`main.ts` 干净
 - 不建议使用`vuex` 。（如果用：请把变量名取复杂一点）
-- 不建议使用`event-bus`等类似的订阅发布模式。（如果用：请把订阅名取复杂一点）
+- 不建议使用全局`event-bus`等类似的订阅发布模式。（如果用：请把订阅名取复杂一点）
 - 不建议使用 `provide` 和 `injecet`。 （如果用：请把方法名取复杂一点）
 - `vue2.x` 中不允许使用 `@vue/composition-api` 造成风格不统一
 - `vue3.x` 中不允许使用 `options api` 语法
@@ -210,3 +209,28 @@ export default Vue.extend({
 ## css规范
 - 禁用 `全局样式`，造成不必要的样式重写
 - 不允许使用 `tailwind css` 等类似的不易维护的库
+
+
+## 项目结构
+
+```
+public
+  ├── static
+  ├──├── js    
+  ├──├── css    
+  ├──├── images
+  ├──└── plugins
+  └── index.html  
+src
+  ├── components 公共组件
+  ├── utils 工具集
+  ├── styles 样式相关
+  ├── views 路由相关
+  ├── request http请求相关
+  ├── extend 修改过的第三方扩展
+  └── app.vue
+package.json
+.eslintrc.js
+.eslintignore
+.babelrc
+...其它配置相关
