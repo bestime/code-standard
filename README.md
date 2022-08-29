@@ -215,11 +215,12 @@ export default Vue.extend({
 
 ```
 public
-  ├── static
+  ├── static 静态文件
   ├──├── js    
   ├──├── css    
   ├──├── images
-  ├──└── plugins
+  ├──├── fonts
+  ├──└── plugins 插件相关
   └── index.html  
 src
   ├── components 公共组件
@@ -227,7 +228,7 @@ src
   ├── styles 样式相关
   ├── views 路由相关
   ├── request http请求相关
-  ├── extend 修改过的第三方扩展
+  ├── extends 修改过的第三方扩展
   └── app.vue
 package.json
 .eslintrc.js
