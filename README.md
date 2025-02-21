@@ -32,35 +32,35 @@ env 环境变量配置
   ├── .env.production 生产模式：正式
   └── .env.development[?-xxx] 其他环境变量配置
 public
-  ├── static - 静态文件（套一层static是为了防止和后端部署冲突后方便修改）
-  ├──├── js - 脚本文件
-  ├──├── css - 样式
-  ├──├── files - 文件
-  ├──├── images - 图片
-  ├──├── fonts - 字体文件
-  ├──├── json - json文件
-  ├──├── demos - 测试相关
-  └──└── plugins - 插件相关
+  ├── static 静态文件（套一层static是为了防止和后端部署冲突后方便修改）
+  ├──├── js 脚本文件
+  ├──├── css 样式
+  ├──├── files 文件
+  ├──├── images 图片
+  ├──├── fonts 字体文件
+  ├──├── json json文件
+  ├──├── demos 测试相关
+  └──└── plugins 插件相关
 src
-  ├── components - 公共组件
-  ├── utils - 工具集
-  ├── styles - 样式相关
-  ├── pages - 路由相关
-  ├── request - http请求相关
-  ├── services - 后端api接口
-  ├── extends - 修改过的第三方扩展
+  ├── components 公共组件
+  ├── utils 工具集
+  ├── styles 样式相关
+  ├── pages 路由相关
+  ├── request http请求相关
+  ├── services 后端api接口
+  ├── extends 修改过的第三方扩展
   └── app.vue
-index.html - 入口模板文件
-vite.config.ts - 构建工具配置文件
-package.json - 包文件
-package-lock.json - 包版本锁定文件
-README.md - 项目介绍
-env.d.ts - 项目声明文件
-tsconfig.json - ts配置文件
-tsconfig.app.json - ts配置文件
-tsconfig.app.json - ts配置文件
-.gitignore - git忽略配置文件
-... - 其它配置相关
+index.html 入口模板文件
+vite.config.ts 构建工具配置文件
+package.json 包文件
+package-lock.json 包版本锁定文件
+README.md 项目介绍
+env.d.ts 项目声明文件
+tsconfig.json ts配置文件
+tsconfig.app.json ts配置文件
+tsconfig.app.json ts配置文件
+.gitignore git忽略配置文件
+... 其它配置相关
 ```
 
 
