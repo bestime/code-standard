@@ -9,24 +9,60 @@
     1. 不要配置自动格式化所有文件（有时格式化结果并不理想）
 
 详细目录:
-1.  [markdown语法参考](https://github.com/google/styleguide/blob/gh-pages/docguide/style.md#document-layout)
-2.  [Javascript规范](#Javascript规范)
+1. [markdown语法参考](https://github.com/google/styleguide/blob/gh-pages/docguide/style.md#document-layout)
+2. [项目结构](#项目结构)
+3. [Javascript规范](#Javascript规范)
     1.  [命名规范](#命名规范)
     1.  [模块导出](#模块导出)
     1.  [慎用订阅模式](#慎用订阅模式)
     1.  [箭头函数](#箭头函数)
-    1.  [谨慎使用class类](#谨慎使用class类)
-    1.  [对所有流控制结构使用花括号](#对所有流控制结构使用花括号)
     1.  [JS注释](https://jsdoc.app/tags-param.html)
     1.  [TS注释](http://typedoc.org/tags/param/)
-3.  [vue规范](#vue规范)
+4.  [vue规范](#vue规范)
     1.  [组件文件结构](#组件文件结构)
     1.  [组件注册及使用](#组件注册及使用)
-    1.  [状态管理](#状态管理)
-3.  [css规范](#css规范)
-4.  [项目结构](#项目结构)
+5.  [css规范](#css规范)
     
-    
+
+## 项目结构
+```
+env 环境变量配置
+  ├── .env.development 开发模式
+  ├── .env.production-test 生产模式：测试
+  ├── .env.production 生产模式：正式
+  └── .env.development[?-xxx] 其他环境变量配置
+public
+  ├── static - 静态文件（套一层static是为了防止和后端部署冲突后方便修改）
+  ├──├── js - 脚本文件
+  ├──├── css - 样式
+  ├──├── files - 文件
+  ├──├── images - 图片
+  ├──├── fonts - 字体文件
+  ├──├── json - json文件
+  ├──├── demos - 测试相关
+  └──└── plugins - 插件相关
+src
+  ├── components - 公共组件
+  ├── utils - 工具集
+  ├── styles - 样式相关
+  ├── pages - 路由相关
+  ├── request - http请求相关
+  ├── services - 后端api接口
+  ├── extends - 修改过的第三方扩展
+  └── app.vue
+index.html - 入口模板文件
+vite.config.ts - 构建工具配置文件
+package.json - 包文件
+package-lock.json - 包版本锁定文件
+README.md - 项目介绍
+env.d.ts - 项目声明文件
+tsconfig.json - ts配置文件
+tsconfig.app.json - ts配置文件
+tsconfig.app.json - ts配置文件
+.gitignore - git忽略配置文件
+... - 其它配置相关
+```
+
 
 ## Javascript规范
 - `明确声明`每一个文件中用到的所有资源，保证可以直接`跳转到引用`
@@ -101,23 +137,6 @@ bus.off('gEvent-demo', handler)
 ```
 
 ### 箭头函数
-
-箭头函数只有一个参数时，不要省略括号 `()`：
-
-```javascript
-const getData = (key) => {
-  return key
-}
-```
-
-
-如果没有this指向问题，不建议使用箭头函数，普通函数更容易阅读
-```javascript
-function getInfo () {
-  return user
-}
-```
-
 箭头函数不要嵌套：
 ```javascript
 const getInfo = () => () => () => () => {
@@ -125,127 +144,43 @@ const getInfo = () => () => () => () => {
 }
 ```
 
-### 谨慎使用class类
-
-`插件`相关可以使用`类`，但`辅助工具`、`函数`、`变量`、`常量`等业务代码不建议封装到`类`里，不要为了图一时方便而牺牲`构建体积`
-
-### 对所有流控制结构使用花括号
-```javascript
-if (isWeekDay) {
-  print('Bike to work!');
-} else {
-  print('Go dancing or read a book!');
-}
-```
-
-这里有一个例外：一个没有 else 的 if 语句，并且这个 if 语句以及它的执行体适合在一行中实现。在这种情况下，如果您愿意，可以不用括号：
-
-```javascript
-if (arg == null) return defaultValue;
-```
-
-但是，如果执行体包含下一行，请使用大括号：
-
-```javascript
-if (overflowChars !== other.overflowChars) {
-  return overflowChars < other.overflowChars;
-}
-```
 
 
 ## vue规范
-
-- 不允许将图片等`静态资源`放入`src`文件夹，请放在`public`文件夹里
-- 保持 `main.js`或`main.ts` 干净
-- 不建议使用`vuex` 。（如果用：请把变量名取复杂一点）
+- 禁止使用标签的 `全局样式`，造成不必要的样式重写，比如：
+  ```css
+  div, span, h1 {
+    color: red;
+  }
+  ```
+- 不允许将图片等`静态资源`放入`src`文件夹，请放在`public`文件夹里，通过静态服务访问
+- 保持 `main.ts` 干净
+- 不建议使用全局变量
+- 不建议使用`vuex`或`pinia` 。（如果用：请把变量名取复杂一点，且不能同时存在）
 - 不建议使用 `provide` 和 `injecet`。 （如果用：请把方法名取复杂一点）
-- `vue2.x` 中不允许使用 `@vue/composition-api` 造成风格不统一
 - `vue3.x` 中不允许使用 `options api` 语法
 
 ### 组件文件结构
-
-> 注：可以是单文件组件 `YourWidget.后缀名`
+注：不允许是单文件组件 `YourWidget.vue`
 
 ```
 YourWidget
-    ├── views <可选>文件夹：路由相关
+    ├── pages <可选>文件夹：路由相关
     ├── components <可选>文件夹：用到的组件
     ├── styles 文件夹：<可选>样式相关
-    ├── utils <可选>文件夹：用到工具
-    ├── index.ts/index.js <可选>
+    ├── lib.ts <可选> 当前组件所分离的工具包
     └── index.vue 组件入口
 ```
 
-
-
-
 ### 组件注册及使用
-
-组件使用时需保持与注册时的`key`一至（可不与组件内部`name`相同），方便明确追踪到未知组件的来源
-
-第一种
+导入时用的生么变量名，就使用什么标签
 ```vue
 <template>
   <MyWidget></MyWidget>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import Vue from 'vue';
 import MyWidget from '@/src/MyWidget/index.vue';
-export default Vue.extend({
-  components: {
-    MyWidget
-  }
-})
 ```
 
-第二种
-```vue
-<template>
-  <my-name-box></my-name-box>
-</template>
-
-<script lang="ts">
-import Vue from 'vue';
-import MyWidget from '@/src/MyWidget/index.vue';
-export default Vue.extend({
-  components: {
-    'my-name-box': MyWidget
-  }
-})
-
-```
-
-### 状态管理
-  `vuex` 与 `pinia` 不允许同时存在
-
-
-## css规范
-- 禁用 `全局样式`，造成不必要的样式重写
-- 不允许使用 `tailwind css` 等类似的不易维护的库
-
-
-## 项目结构
-
-```
-public
-  ├── static 静态文件
-  ├──├── js    
-  ├──├── css    
-  ├──├── images
-  ├──├── fonts
-  ├──└── plugins 插件相关
-  └── index.html  
-src
-  ├── components 公共组件
-  ├── utils 工具集
-  ├── styles 样式相关
-  ├── views 路由相关
-  ├── request http请求相关
-  ├── extends 修改过的第三方扩展
-  └── app.vue
-package.json
-.eslintrc.js
-.eslintignore
-.babelrc
-...其它配置相关
